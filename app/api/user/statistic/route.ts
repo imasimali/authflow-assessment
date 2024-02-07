@@ -68,8 +68,8 @@ export async function GET(req: Request) {
     };
 
     return NextResponse.json(data);
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error(error.response.data.message);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }

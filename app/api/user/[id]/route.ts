@@ -104,7 +104,8 @@ export async function GET(req: Request, { params }: Params) {
       `/api/v2/users/${userId}`
     );
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (error: any) {
+    console.error(error.response.data.message);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
@@ -177,7 +178,8 @@ export async function PATCH(req: Request, { params }: Params) {
     }
     await apiClient.patch(`/api/v2/users/${userId}`, { name: data.name });
     return NextResponse.json({ message: "Name updated successfully." });
-  } catch (error) {
+  } catch (error: any) {
+    console.error(error.response.data.message);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
@@ -261,7 +263,8 @@ export async function POST(req: Request, { params }: Params) {
         { status: 400 }
       );
     }
-  } catch (error) {
+  } catch (error: any) {
+    console.error(error.response.data.message);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
