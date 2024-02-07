@@ -1,9 +1,7 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import axios from "axios";
 import { NextResponse } from "next/server";
 import dayjs from "dayjs";
-
-import { apiClient } from "../[id]/route";
+import { apiClient } from "@/lib/helpers";
 
 export const dynamic = "force-dynamic";
 export type StatisticGetResponse = {

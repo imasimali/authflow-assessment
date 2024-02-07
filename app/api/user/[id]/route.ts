@@ -1,6 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import axios from "axios";
 import { NextResponse } from "next/server";
+import { apiClient } from "@/lib/helpers";
 
 type Params = {
   params: {
@@ -22,18 +22,6 @@ export type UserGetResponse = {
   picture: string;
   email_verified: boolean;
 };
-
-const AUTH0_API_BASE_URL = process.env.AUTH0_ISSUER_BASE_URL!;
-const AUTH0_MANAGEMENT_API_TOKEN = process.env.AUTH0_MANAGEMENT_API_TOKEN!;
-
-export const apiClient = axios.create({
-  baseURL: AUTH0_API_BASE_URL,
-  headers: {
-    Authorization: `Bearer ${AUTH0_MANAGEMENT_API_TOKEN}`,
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  },
-});
 
 async function verifySessionAndUser(
   req: Request,
